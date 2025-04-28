@@ -1,4 +1,4 @@
-# New VP project
+## New VP project
 
   # How to start the programm
    # first step - compile the program with the command:
