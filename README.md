@@ -1,6 +1,6 @@
-## New VP project
+# New VP project
 
-  # How to start the programm
+  ## How to start the programm?
    # first step - compile the program with the command:
     ```
     g++ main.cpp ./models/Supplier/Supplier.cpp ./models/User/User.cpp ./models/Employee/Employee.cpp
