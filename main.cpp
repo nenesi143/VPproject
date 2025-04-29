@@ -39,6 +39,10 @@ int main(){
             wcout << L"|-------------------------------------------|" << endl;
             wcout << L"| 8 - Удалить запись Employee               |" << endl;
             wcout << L"|-------------------------------------------|" << endl;
+            wcout << L"| 9 - Фильтрация записей Supplier           |" << endl;
+            wcout << L"|-------------------------------------------|" << endl;
+            wcout << L"| 10 - Фильтрация записей Employee          |" << endl;
+            wcout << L"|-------------------------------------------|" << endl;
             wcout << L"| 0 - Выход из приложения                   |" << endl;
             wcout << L"|-------------------------------------------|" << endl;
     
@@ -177,11 +181,11 @@ int main(){
                     wcout << setfill(L'-') << setw(85) << L"-" << endl;
                     wcout << setfill(L' ');
     
-                    int indexEmp = 1;
-                    for (const auto& emp: recordsEmp){
+                    int indexSup = 1;
+                    for (const auto& sup: recordsSup){
                         wcout << left
-                        << L"| " << setw(4) << indexEmp++;
-                        wcout << emp;
+                        << L"| " << setw(4) << indexSup++;
+                        wcout << sup;
                     }
     
                     wcout << setfill(L'-') << setw(85) << L"-" << endl;
@@ -230,6 +234,12 @@ int main(){
                     wcout << L"Запись удалена!" << endl;
                     break;
                 }
+                case 9:
+                    recordsSup.filterByAge();
+                    break;
+                case 10:
+                    recordsEmp.filterByAge();
+                    break;
                 case 0:
                     return 0;
                 default:    

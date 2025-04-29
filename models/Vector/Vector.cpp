@@ -1,6 +1,7 @@
 #include "Vector.h"
 #include "../Employee/Employee.h"
 #include "../Supplier/Supplier.h"
+#include <algorithm>
 
 template <typename T>
 Vector<T>::Vector() : data(nullptr), m_size(0), m_capacity(0) {}
@@ -29,12 +30,23 @@ void Vector<T>::resize(int size){
 }
 
 template <typename T>
-void Vector<T>::push_back(const T& newData){
-    if (m_size >= m_capacity){
-        m_capacity *= 2;
+void Vector<T>::push_back(const T& newData) {
+    if (m_size >= m_capacity) {
+        int newCapacity = (m_capacity == 0) ? 1 : m_capacity * 2;
+        T* newDataArray = new T[newCapacity];
+
+        for (int i = 0; i < m_size; ++i) {
+            newDataArray[i] = data[i];
+        }
+
+        delete[] data;
+        data = newDataArray;
+        m_capacity = newCapacity;
     }
+
     data[m_size++] = newData;
 }
+
 
 template <typename T>
 void Vector<T>::pop_back(){
@@ -120,3 +132,8 @@ void Vector<T>::filterByAge(){
         wcout << L"Нет записей, старше, чем: " << age << endl;
     }
 }
+
+// Явная инстанциация шаблона, без этого прога не запускается
+// Для каждого следующего вектора нужно сделать то же самое
+template class Vector<Supplier>;
+template class Vector<Employee>;

@@ -4,8 +4,8 @@ template <typename T>
 class Vector{
     private:
         T* data;
-        template <typename T> m_size;
-        template <typename T> m_capacity;
+        int m_size;
+        int m_capacity;
 
     public:
         Vector();
