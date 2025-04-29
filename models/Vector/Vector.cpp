@@ -2,6 +2,7 @@
 #include "../Employee/Employee.h"
 #include "../Supplier/Supplier.h"
 #include <algorithm>
+#include <iomanip>
 
 template <typename T>
 Vector<T>::Vector() : data(nullptr), m_size(0), m_capacity(0) {}
@@ -120,9 +121,9 @@ void Vector<T>::filterByAge(){
     wcout << L"Введите возраст, для вывода записей, старше, чем: ";
     wcin >> age;
     wcin.ignore();
-
+    
     for (int i = 0; i < m_size; i++){
-        if (data[i].getAge() > age){
+        if (data[i].getAge() > age){      
             data[i].getRecord();
             found = true;
         }
@@ -131,6 +132,29 @@ void Vector<T>::filterByAge(){
     if (!found){
         wcout << L"Нет записей, старше, чем: " << age << endl;
     }
+
+    wcout << setfill(L'-') << setw(85) << L"-" << endl;
+    wcout << setfill(L' ');
+    wcout << left
+        << L"| " << setw(4) << L"№"
+        << L"| " << setw(20) << L"Фамилия"
+        << L"| " << setw(20) << L"Имя"
+        << L"| " << setw(10) << L"Возраст"
+        << L"| " << setw(20) << L"Продукция" << L"|" << endl;
+    wcout << setfill(L'-') << setw(85) << L"-" << endl;
+    wcout << setfill(L' ');
+
+    int index = 1;
+
+    for (int i = 0; i < m_size; i++){
+        if (data[i].getAge() > age){
+            wcout << left << L"| " << setw(4) << index++;
+            wcout << data[i];
+        }
+    }
+
+    wcout << setfill(L'-') << setw(85) << L"-" << endl;
+    wcout << setfill(L' ');
 }
 
 // Явная инстанциация шаблона, без этого прога не запускается
