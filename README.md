@@ -7,7 +7,7 @@
 Сначала скомпилируйте программу командой:
 
 ```
-g++ main.cpp ./models/Supplier/Supplier.cpp ./models/User/User.cpp ./models/Employee/Employee.cpp ./models/Auth/Auth.cpp
+g++ main.cpp ./models/Supplier/Supplier.cpp ./models/User/User.cpp ./models/Employee/Employee.cpp ./models/Auth/Auth.cpp ./models/Vector/Vector.cpp
 ```
 
 ### 2. Запуск программы
