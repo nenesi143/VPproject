@@ -100,3 +100,23 @@ template <typename T>
 void Vector<T>::sortDescending(){
     sort(data, data + m_size, greater<T>());
 }
+
+template <typename T>
+void Vector<T>::filterByAge(){
+    int age;
+    bool found = false;
+    wcout << L"Введите возраст, для вывода записей, старше, чем: ";
+    wcin >> age;
+    wcin.ignore();
+
+    for (int i = 0; i < m_size; i++){
+        if (data[i].getAge() > age){
+            data[i].getRecord();
+            found = true;
+        }
+    }
+
+    if (!found){
+        wcout << L"Нет записей, старше, чем: " << age << endl;
+    }
+}

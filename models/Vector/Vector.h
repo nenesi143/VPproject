@@ -14,6 +14,7 @@ class Vector{
         void sortAscending(); // Ascending - по возрастанию
         void sortDescending(); // Descending - по убыванию
         void push_back(const T& newData);
+        void filterByAge();
         void pop_back();
         void erase(int index);
         bool empty() const;
