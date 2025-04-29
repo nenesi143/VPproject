@@ -10,13 +10,17 @@ class Vector{
     public:
         Vector();
         ~Vector();
-
-        void puch_back();
+        void printAll() const;
+        void sortAscending(); // Ascending - по возрастанию
+        void sortDescending(); // Descending - по убыванию
+        void push_back(const T& newData);
         void pop_back();
-        void erase(template <typename T> index);
+        void erase(int index);
         bool empty() const;
-        template <typename T> size() const;
-        void resize();
+        int size() const;
+        void resize(int size);
         T* begin();
         T *end();
+        T& get(int index);
+        T& set(int index);
 };

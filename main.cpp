@@ -2,6 +2,7 @@
 #include "models/Employee/Employee.h"
 #include "models/Supplier/Supplier.h"
 #include "models/Auth/Auth.h"
+#include "models/Vector/Vector.h"
 #include <iostream>
 #include <vector>
 #include <iomanip>
@@ -13,8 +14,8 @@ int main(){
 
     setlocale(LC_ALL, "Russian"); // Убрать Russian для Linux
 
-    vector<Supplier> recordsSup;
-    vector<Employee> recordsEmp;
+    Vector<Supplier> recordsSup;
+    Vector<Employee> recordsEmp;
 
     wstring role = authMenu();
 
@@ -119,6 +120,7 @@ int main(){
                         wcout << L"Список поставщиков пуст!" << endl;
                         break;
                     }
+
                     int choiceSup;
                     wcout << L"Как отсортировать поставщиков?" << endl;
                     wcout << L"1 - По возрастания (А-Я)" << endl;
@@ -126,11 +128,12 @@ int main(){
                     wcout << L"Введите команду: ";
                     wcin >> choiceSup;
                     wcin.ignore();
+
                     if (choiceSup == 1){
-                        sort(recordsSup.begin(), recordsSup.end());
+                        recordsSup.sortAscending();
                     }
                     else if (choiceSup == 2){
-                        sort(recordsSup.begin(), recordsSup.end(), greater<>());
+                        recordsSup.sortDescending();
                     }
                     else{
                         wcout << L"Неправильная команда!" << endl;
@@ -149,10 +152,10 @@ int main(){
                     wcin >> choiceEmp;
                     wcin.ignore();
                     if (choiceEmp == 1){
-                        sort(recordsEmp.begin(), recordsEmp.end());
+                        recordsEmp.sortAscending();
                     }
                     else if(choiceEmp == 2){
-                        sort(recordsEmp.begin(), recordsEmp.end(), greater<>());
+                        recordsEmp.sortDescending();
                     }
                     else{
                         wcout << L"Неправильная команда!" << endl;
@@ -188,7 +191,7 @@ int main(){
                     wcout << L"Введите индекс удаляемой записи: ";
                     wcin >> delSup;
                     wcin.ignore();
-                    recordsSup.erase(recordsSup.begin() + delSup - 1);
+                    recordsSup.erase(delSup);
                     wcout << L"Запись удалена!" << endl;
                     break;
                 }
@@ -223,7 +226,7 @@ int main(){
                     wcout << L"Введите индекс удаляемой записи: ";
                     wcin >> delEmp;
                     wcin.ignore();
-                    recordsEmp.erase(recordsEmp.begin() + delEmp - 1);
+                    recordsEmp.erase(delEmp);
                     wcout << L"Запись удалена!" << endl;
                     break;
                 }
