@@ -249,7 +249,54 @@ int main(){
     }
 
     else if (role == L"user"){
-        wcout << L"ку" << endl;
+        while (true){
+            wcout << L"|-------------------------------------------|" << endl;
+            wcout << L"| 1 - Вывести все записи                    |" << endl;
+            wcout << L"|-------------------------------------------|" << endl;
+            wcout << L"| 0 - Выход из приложения                   |" << endl;
+            wcout << L"|-------------------------------------------|" << endl;
+
+            int command;
+            wcout << L"Введите команду: ";
+            wcin >> command;
+            wcin.ignore();
+
+            switch(command){
+                case 1:{
+                    wcout << setfill(L'-') << setw(85) << L"-" << endl;
+                    wcout << setfill(L' ');
+                    wcout << left
+                        << L"| " << setw(4) << L"№"
+                        << L"| " << setw(20) << L"Фамилия"
+                        << L"| " << setw(20) << L"Имя"
+                        << L"| " << setw(10) << L"Возраст"
+                        << L"| " << setw(20) << L"Личная ячейка" << L"|" << endl;
+                    wcout << setfill(L'-') << setw(85) << L"-" << endl;
+                    wcout << setfill(L' ');
+
+                    int index = 1;
+
+                    for (const auto& sup : recordsSup){
+                        wcout << left
+                        << L"| " << setw(4) << index++;
+                        wcout << sup;
+                    }
+
+                    for (const auto& emp : recordsEmp){
+                        wcout << left
+                        << L"| " << setw(4) << index++;
+                        wcout << emp;
+                    }
+                    wcout << setfill(L'-') << setw(85) << L"-" << endl;
+                    wcout << setfill(L' ');
+                }
+                break;
+                case 0:
+                    return 0;
+                default:
+                    wcout << L"Неправильная команда, повторите попытку!" << endl;
+            }
+        }
     }
     else{
         wcout << L"Произошла ошибка авторизации" << endl;

@@ -1,1 +1,2 @@
 admin 12345 admin
+user 12345 user
