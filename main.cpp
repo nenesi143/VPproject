@@ -3,6 +3,7 @@
 #include "models/Supplier/Supplier.h"
 #include "models/Auth/Auth.h"
 #include "models/Vector/Vector.h"
+#include "Utils.cpp"
 #include <iostream>
 #include <vector>
 #include <iomanip>
@@ -49,10 +50,8 @@ int main(){
                 wcout << L"| 0 - Выход из приложения                   |" << endl;
                 wcout << L"|-------------------------------------------|" << endl;
         
-                int command;
                 wcout << L"Номер команды: ";
-                wcin >> command;
-                wcin.ignore();
+                int command = GetIntValue<int>();
         
                 switch(command){
                     case 1: {
@@ -122,19 +121,18 @@ int main(){
                         wcout << setfill(L' ');
                     }
                         break;
-                    case 5:
+                    case 5:{
                         if (recordsSup.empty()){
                             wcout << L"Список поставщиков пуст!" << endl;
                             break;
                         }
     
-                        int choiceSup;
                         wcout << L"Как отсортировать поставщиков?" << endl;
                         wcout << L"1 - По возрастания (А-Я)" << endl;
                         wcout << L"2 - По убыванию (Я-А)" << endl;
                         wcout << L"Введите команду: ";
-                        wcin >> choiceSup;
-                        wcin.ignore();
+
+                        int choiceSup = GetIntValue<int>();
     
                         if (choiceSup == 1){
                             recordsSup.sortAscending();
@@ -145,19 +143,20 @@ int main(){
                         else{
                             wcout << L"Неправильная команда!" << endl;
                         }
+                    }
                         break;
-                    case 6:
+                    case 6:{
                         if (recordsEmp.empty()){
                             wcout << L"Список сотрудников пуст!" << endl;
                             break;
                         }
-                        int choiceEmp;
+
                         wcout << L"Как отсортировать сотрудников?" << endl;
                         wcout << L"1 - По возрастания (А-Я)" << endl;
                         wcout << L"2 - По убыванию (Я-А)" << endl;
                         wcout << L"Введите команду: ";
-                        wcin >> choiceEmp;
-                        wcin.ignore();
+
+                        int choiceEmp = GetIntValue<int>();
                         if (choiceEmp == 1){
                             recordsEmp.sortAscending();
                         }
@@ -167,6 +166,7 @@ int main(){
                         else{
                             wcout << L"Неправильная команда!" << endl;
                         }
+                    }
                         break;
                     case 7:{
                         if (recordsSup.empty()){
@@ -194,10 +194,9 @@ int main(){
                         wcout << setfill(L'-') << setw(85) << L"-" << endl;
                         wcout << setfill(L' ');
         
-                        int delSup;
+                        
                         wcout << L"Введите индекс удаляемой записи: ";
-                        wcin >> delSup;
-                        wcin.ignore();
+                        int delSup = GetIntValue<int>();
                         recordsSup.erase(delSup);
                         wcout << L"Запись удалена!" << endl;
                     }
@@ -229,10 +228,8 @@ int main(){
                         wcout << setfill(L'-') << setw(85) << L"-" << endl;
                         wcout << setfill(L' ');
         
-                        int delEmp;
                         wcout << L"Введите индекс удаляемой записи: ";
-                        wcin >> delEmp;
-                        wcin.ignore();
+                        int delEmp = GetIntValue<int>();
                         recordsEmp.erase(delEmp);
                         wcout << L"Запись удалена!" << endl;
                     }
@@ -263,10 +260,8 @@ int main(){
                     wcout << L"| 0 - Выход из приложения                   |" << endl;
                     wcout << L"|-------------------------------------------|" << endl;
         
-                    int command;
                     wcout << L"Введите команду: ";
-                    wcin >> command;
-                    wcin.ignore();
+                    int command = GetIntValue<int>();
         
                     switch(command){
                         case 1:{
