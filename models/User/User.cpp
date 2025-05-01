@@ -1,4 +1,5 @@
 #include "User.h"
+#include "../../Utils.h"
 #include <iostream>
 #include <limits>
 
@@ -10,8 +11,7 @@ void User::setRecord() {
     wcout << L"Введите имя: ";
     getline(wcin, m_name);
     wcout << L"Введите возраст: ";
-    wcin >> m_age;
-    wcin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+    m_age = GetIntValue<int>();
 }
 
 void User::getRecord() const {

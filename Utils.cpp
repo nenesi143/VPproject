@@ -1,3 +1,4 @@
+#include "Utils.h"
 #include <iostream>
 #include <stdexcept>
 #include <limits>
@@ -17,7 +18,7 @@ T GetIntValue(){
             return n;
         }
         catch (const ios_base::failure& error){
-            wcout << L"Неверный ввод, ошибка" << error.what() <<  L"! Повторите попытку: ";
+            wcout << L"Неверный ввод, ошибка " << error.what() <<  L" ! Повторите попытку: ";
             wcin.clear();
             wcin.ignore(numeric_limits<streamsize>::max(), L'\n');
         }
