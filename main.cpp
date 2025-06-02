@@ -47,6 +47,10 @@ int main(){
                 wcout << L"|-------------------------------------------|" << endl;
                 wcout << L"| 11 - Выйти из профиля                     |" << endl;
                 wcout << L"|-------------------------------------------|" << endl;
+                wcout << L"| 12 - Редактировать запись Employee        |" << endl;
+                wcout << L"|-------------------------------------------|" << endl;
+                wcout << L"| 13 - Редактировать запись Supplier        |" << endl;
+                wcout << L"|-------------------------------------------|" << endl;
                 wcout << L"| 0 - Выход из приложения                   |" << endl;
                 wcout << L"|-------------------------------------------|" << endl;
         
@@ -242,6 +246,74 @@ int main(){
                         break;
                     case 11:{
                         role = L"";
+                        break;
+                    }
+                    case 12:
+                        {
+                        if (recordsEmp.empty()){
+                            wcout << L"Список сотрудников пуст!" << endl;
+                            break;
+                        }
+                        wcout << setfill(L'-') << setw(85) << L"-" << endl;
+                        wcout << setfill(L' ');
+                        wcout << left
+                            << L"| " << setw(4) << L"№"
+                            << L"| " << setw(20) << L"Фамилия"
+                            << L"| " << setw(20) << L"Имя"
+                            << L"| " << setw(10) << L"Возраст"
+                            << L"| " << setw(20) << L"Должность" << L"|" << endl;
+                        wcout << setfill(L'-') << setw(85) << L"-" << endl;
+                        wcout << setfill(L' ');
+        
+                        int indexEmp = 1;
+        
+                        for (const auto& emp : recordsEmp){
+                            wcout << left
+                            << L"| " << setw(4) << indexEmp++;
+                            wcout << emp;
+                        }
+                        
+                        wcout << setfill(L'-') << setw(85) << L"-" << endl;
+                        wcout << setfill(L' ');
+        
+                        wcout << L"Введите индекс редактируемой записи: ";
+                        int EditEmp = GetIntValue<int>();
+                        recordsEmp.get(EditEmp - 1).setRecord();
+                        wcout << L"Запись изменена!" << endl;
+                        break;
+                    }
+                    case 13:
+                                                {
+                        if (recordsSup.empty()){
+                            wcout << L"Список сотрудников пуст!" << endl;
+                            break;
+                        }
+                        wcout << setfill(L'-') << setw(85) << L"-" << endl;
+                        wcout << setfill(L' ');
+                        wcout << left
+                            << L"| " << setw(4) << L"№"
+                            << L"| " << setw(20) << L"Фамилия"
+                            << L"| " << setw(20) << L"Имя"
+                            << L"| " << setw(10) << L"Возраст"
+                            << L"| " << setw(20) << L"Должность" << L"|" << endl;
+                        wcout << setfill(L'-') << setw(85) << L"-" << endl;
+                        wcout << setfill(L' ');
+        
+                        int indexSup = 1;
+        
+                        for (const auto& sup : recordsSup){
+                            wcout << left
+                            << L"| " << setw(4) << indexSup++;
+                            wcout << sup;
+                        }
+                        
+                        wcout << setfill(L'-') << setw(85) << L"-" << endl;
+                        wcout << setfill(L' ');
+        
+                        wcout << L"Введите индекс редактируемой записи: ";
+                        int EditSup = GetIntValue<int>();
+                        recordsSup.get(EditSup - 1).setRecord();
+                        wcout << L"Запись изменена!" << endl;
                         break;
                     }
                     case 0:
