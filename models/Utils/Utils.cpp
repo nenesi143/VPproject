@@ -23,3 +23,5 @@ T GetIntValue(){
         }
     }
 }
+
+template int GetIntValue<int>();

@@ -3,21 +3,17 @@
 
 using namespace std;
 
-class InvalidInputException : public exception {
-private:
-    wstring message;
-
+class MyException {
 public:
-    explicit InvalidInputException(const wstring& msg)
-        : message(msg) {}
+    explicit MyException(const char* error)
+        : m_error(error) {}
 
-    const char* what() const noexcept override {
-        return "InvalidInputException occurred.";
+    const char* getError() const {
+        return m_error;
     }
 
-    const wstring& GetMessage() const noexcept {
-        return message;
-    }
+private:
+    const char* m_error;
 };
 
 template <typename T>

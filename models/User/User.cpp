@@ -12,6 +12,10 @@ void User::setRecord() {
     getline(wcin, m_name);
     wcout << L"Введите возраст: ";
     m_age = GetIntValue<int>();
+    if (m_age < 18){
+        wcout << L"Возраст меньше 18, повторите попытку: ";
+        m_age = GetIntValue<int>();
+    }
 }
 
 void User::getRecord() const {
