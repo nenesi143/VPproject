@@ -6,11 +6,10 @@
 using namespace std;
 
 template <typename T>
-
 T GetIntValue(){
     T n;
-    wcin.exceptions(wios::failbit | wios::badbit);  // failbit - невозможность интерпретирования string в int
-                                                    // badbit - ошибка чтения потока
+    wcin.exceptions(wios::failbit | wios::badbit);
+
     while (true){
         try{
             wcin >> n;
@@ -18,7 +17,7 @@ T GetIntValue(){
             return n;
         }
         catch (const ios_base::failure& error){
-            wcout << L"Неверный ввод, ошибка " << error.what() <<  L" ! Повторите попытку: ";
+            wcout << L"Неверный ввод. Ошибка: " << error.what() << L" Повторите ввод: ";
             wcin.clear();
             wcin.ignore(numeric_limits<streamsize>::max(), L'\n');
         }
